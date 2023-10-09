@@ -41,6 +41,18 @@ def ghan():
     except ValueError:
         messagebox.showwarning("Chú ý", "Nhập đúng định dạng của biểu thức")
 
+def tinh_dien_tich(f, x, a, b, n):
+    delta_x = (b - a) / n
+    x_vals = [a + i * delta_x for i in range(n)]
+    area = 0
+
+    for x_val in x_vals:
+        height = f.subs(x, x_val)
+        rectangle_area = height * delta_x
+        area += rectangle_area
+
+    return area
+
 def rutgon():
     try:
         ham = ham_input.get()
