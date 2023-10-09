@@ -1,33 +1,46 @@
 import tkinter as tk
 import sympy as sym
+from tkinter import messagebox
 
 def daoham():
-    ham = ham_input.get()
-    x = sym.Symbol('x')
-    fx = sym.sympify(ham)
-    daoham = sym.diff(fx, x)
-    kqua.configure(text=f"Đạo hàm: {daoham}")
+    try:
+        ham = ham_input.get()
+        x = sym.Symbol('x')
+        fx = sym.sympify(ham)
+        daoham = sym.diff(fx, x)
+        kqua.configure(text=f"Đạo hàm: {daoham}")
+    except ValueError:
+        messagebox.showwarning("Chú ý", "Nhập đúng định dạng của biểu thức")
 
 def tichphan():
-    ham = ham_input.get()
-    x = sym.Symbol('x')
-    fx = sym.sympify(ham)
-    tichphan = sym.integrate(fx, x)
-    kqua.configure(text=f"Tích phân: {tichphan}")
+    try:
+        ham = ham_input.get()
+        x = sym.Symbol('x')
+        fx = sym.sympify(ham)
+        tichphan = sym.integrate(fx, x)
+        kqua.configure(text=f"Tích phân: {tichphan}")
+    except ValueError:
+        messagebox.showwarning("Chú ý", "Nhập đúng định dạng của biểu thức")
 
 def ghan():
-    ham = ham_input.get()
-    x = sym.Symbol('x')
-    fx = sym.sympify(ham)
-    ghan = sym.limit(fx, x, 0)
-    kqua.configure(text=f"Giới hạn: {ghan}")
+    try:
+        ham = ham_input.get()
+        x = sym.Symbol('x')
+        fx = sym.sympify(ham)
+        ghan = sym.limit(fx, x, 0)
+        kqua.configure(text=f"Giới hạn: {ghan}")
+    except ValueError:
+        messagebox.showwarning("Chú ý", "Nhập đúng định dạng của biểu thức")
 
 def rutgon():
-    ham = ham_input.get()
-    x = sym.Symbol('x')
-    fx = sym.sympify(ham)
-    rutgon = sym.simplify(fx)
-    kqua.configure(text=f"Biểu thức rút gọn: {rutgon}")
+    try:
+        ham = ham_input.get()
+        x = sym.Symbol('x')
+        fx = sym.sympify(ham)
+        rutgon = sym.simplify(fx)
+        kqua.configure(text=f"Biểu thức rút gọn: {rutgon}")
+    except ValueError:
+        messagebox.showwarning("Chú ý", "Nhập đúng định dạng của biểu thức")
 window = tk.Tk()
 window.title("Ứng dụng hỗ trợ môn giải tích")
 window.geometry('500x200')
