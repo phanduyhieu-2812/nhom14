@@ -5,40 +5,52 @@ from tkinter import messagebox
 def daoham():
     try:
         ham = ham_input.get()
-        x = sym.Symbol('x')
-        fx = sym.sympify(ham)
-        daoham = sym.diff(fx, x)
-        kqua.configure(text=f"Đạo hàm: {daoham}")
+        if all(char.isdigit() or char == 'x' or char in ['+', '-', '*', '/', '^', '(', ')'] for char in ham):
+            x = sym.Symbol('x')
+            fx = sym.sympify(ham)
+            daoham = sym.diff(fx, x)
+            kqua.configure(text=f"Đạo hàm: {daoham}")
+        else:
+            messagebox.showwarning("Chú ý", "Hãy nhập biểu thức với các chữ số và biến x")
     except ValueError:
         messagebox.showwarning("Chú ý", "Nhập đúng định dạng của biểu thức")
 
 def tichphan():
     try:
         ham = ham_input.get()
-        x = sym.Symbol('x')
-        fx = sym.sympify(ham)
-        tichphan = sym.integrate(fx, x)
-        kqua.configure(text=f"Tích phân: {tichphan}")
+        if all(char.isdigit() or char == 'x' or char in ['+', '-', '*', '/', '^', '(', ')'] for char in ham):
+            x = sym.Symbol('x')
+            fx = sym.sympify(ham)
+            tichphan = sym.integrate(fx, x)
+            kqua.configure(text=f"Tích phân: {tichphan}")
+        else:
+            messagebox.showwarning("Chú ý", "Hãy nhập biểu thức với các chữ số và biến x")
     except ValueError:
         messagebox.showwarning("Chú ý", "Nhập đúng định dạng của biểu thức")
 
 def ghan():
     try:
         ham = ham_input.get()
-        x = sym.Symbol('x')
-        fx = sym.sympify(ham)
-        ghan = sym.limit(fx, x, 0)
-        kqua.configure(text=f"Giới hạn: {ghan}")
+        if all(char.isdigit() or char == 'x' or char in ['+', '-', '*', '/', '^', '(', ')'] for char in ham):
+            x = sym.Symbol('x')
+            fx = sym.sympify(ham)
+            ghan = sym.limit(fx, x, 0)
+            kqua.configure(text=f"Giới hạn: {ghan}")
+        else:
+            messagebox.showwarning("Chú ý", "Hãy nhập biểu thức với các chữ số và biến x")
     except ValueError:
         messagebox.showwarning("Chú ý", "Nhập đúng định dạng của biểu thức")
 
 def rutgon():
     try:
         ham = ham_input.get()
-        x = sym.Symbol('x')
-        fx = sym.sympify(ham)
-        rutgon = sym.simplify(fx)
-        kqua.configure(text=f"Biểu thức rút gọn: {rutgon}")
+        if all(char.isdigit() or char == 'x' or char in ['+', '-', '*', '/', '^', '(', ')'] for char in ham):
+            x = sym.Symbol('x')
+            fx = sym.sympify(ham)
+            rutgon = sym.simplify(fx)
+            kqua.configure(text=f"Biểu thức rút gọn: {rutgon}")
+        else:
+            messagebox.showwarning("Chú ý", "Hãy nhập biểu thức với các chữ số và biến x")
     except ValueError:
         messagebox.showwarning("Chú ý", "Nhập đúng định dạng của biểu thức")
 window = tk.Tk()
