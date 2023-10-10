@@ -28,6 +28,12 @@ def math():
             label_ketqua.config(text="Hệ có vô số nghiệm")
         else:
             label_ketqua.config(text="Hệ vô nghiệm")
+    except ValueError:
+        main_frame.pack_forget()
+        second_frame.pack()
+        third_frame.pack_forget()
+        mes="Nhập số nguyên hoặc số thực"
+        messagebox.showwarning("Cảnh báo",mes )
 def bt1():
     n=int(entry1.get())
     main_frame.pack_forget()
