@@ -4,6 +4,11 @@ import matplotlib.pyplot as plt
 
 # Read the image
 img = cv2.imread('test.png')
+# Hiển thị ảnh gốc
+        plt.subplot(1, 2, 1)
+        plt.title("Original")
+        plt.imshow(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+        plt.axis('off')
 
 # Convert the image to grayscale
 gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
