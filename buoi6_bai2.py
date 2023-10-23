@@ -28,6 +28,15 @@ def show_image():
     
     plt.tight_layout()
     plt.show()
+
+     # Kiểm tra xem ảnh có tồn tại hay không
+        if image is None:
+            error_label.config(text="Không thể đọc ảnh!", fg="red")
+            return
+
+     # Hiển thị ảnh gốc
+        display_image(image, "Original Image")
+        
     # Hiển thị ảnh bằng matplotlib
     '''plt.imshow(cv2.cvtColor(rotated_image, cv2.COLOR_BGR2RGB))
     plt.axis('off')
