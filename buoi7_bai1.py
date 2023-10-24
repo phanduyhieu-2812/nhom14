@@ -33,6 +33,12 @@ def apply_filters():
     display_image(output_1, 'Sharpening')
     display_image(output_2, 'Excessive Sharpening')
     display_image(output_3, 'Edge Enhancement')
+# Hàm xử lý sự kiện khi nút "Save Image" được nhấn
+def save_image():
+    global img
+    file_path = filedialog.asksaveasfilename(defaultextension=".jpg", filetypes=[("JPEG Image", "*.jpg"), ("PNG Image", "*.png")])
+    if file_path:
+        cv2.imwrite(file_path, cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
 
 
 # Hàm xử lý sự kiện khi nút "Undo" được nhấn
@@ -62,6 +68,10 @@ open_button.pack(pady=10)
 # Tạo nút để áp dụng bộ lọc
 apply_button = tk.Button(root, text="Apply Filters", command=apply_filters)
 apply_button.pack(pady=10)
+# Tạo nút để lưu hình ảnh
+save_button = tk.Button(root, text="Save Image", command=save_image)
+save_button.pack(pady=10)
+
 
 # Tạo nút để hoàn tác bộ lọc
 undo_button = tk.Button(root, text="Undo Filters", command=undo_filters)
