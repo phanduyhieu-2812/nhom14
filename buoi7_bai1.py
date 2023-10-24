@@ -7,10 +7,11 @@ from PIL import Image, ImageTk
 
 # Hàm xử lý sự kiện khi nút "Open Image" được nhấn
 def open_image():
-    global img
+    global img, original_img
     file_path = filedialog.askopenfilename()
     img = cv2.imread(file_path)
     img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    original_img = img.copy()
     display_image(img)
 
 
@@ -34,6 +35,13 @@ def apply_filters():
     display_image(output_3, 'Edge Enhancement')
 
 
+# Hàm xử lý sự kiện khi nút "Undo" được nhấn
+def undo_filters():
+    global img
+    img = original_img.copy()
+    display_image(img)
+
+
 # Hàm hiển thị hình ảnh trong cửa sổ
 def display_image(image, window_title='Image'):
     image = Image.fromarray(image)
@@ -49,15 +57,23 @@ root.title("Image Filters")
 
 # Tạo nút để mở hình ảnh
 open_button = tk.Button(root, text="Open Image", command=open_image)
-open_button.pack(pady=20)
+open_button.pack(pady=10)
 
 # Tạo nút để áp dụng bộ lọc
 apply_button = tk.Button(root, text="Apply Filters", command=apply_filters)
-apply_button.pack(pady=20)
+apply_button.pack(pady=10)
+
+# Tạo nút để hoàn tác bộ lọc
+undo_button = tk.Button(root, text="Undo Filters", command=undo_filters)
+undo_button.pack(pady=10)
 
 # Label để hiển thị hình ảnh
 label = tk.Label(root)
 label.pack()
+
+# Khởi tạo biến img và original_img
+img = None
+original_img = None
 
 # Chạy vòng lặp chính của Tkinter
 root.mainloop()
