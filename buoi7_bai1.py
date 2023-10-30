@@ -52,6 +52,11 @@ def draw_on_image():
     label.bind("<B1-Motion>", draw)  # Xử lý sự kiện vẽ khi chuột di chuyển
     label.bind("<Button-1>", start_draw)  # Xử lý sự kiện bắt đầu vẽ khi nhấn chuột trái
     label.bind("<ButtonRelease-1>", stop_draw)  # Xử lý sự kiện kết thúc vẽ khi thả chuột trái
+# Hàm xử lý sự kiện khi nút "Convert to Grayscale" được nhấn
+def convert_to_grayscale():
+    global img
+    gray_img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)  # Chuyển đổi sang ảnh xám
+    display_image(gray_img, 'Grayscale Image')
 
 # Hàm hiển thị hình ảnh trong cửa sổ
 def display_image(image, window_title='Image'):
