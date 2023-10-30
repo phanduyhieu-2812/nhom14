@@ -25,8 +25,12 @@ def draw_graph():
         error_label.config(text='Lỗi: Biểu thức không hợp lệ')
         return
 
+    # Lấy miền xác định từ ô văn bản
+    domain = domain_entry.get()
+    domain = [float(x.strip()) for x in domain.split(',')]
+
     # Miền xác định
-    x = np.linspace(-10, 5, 100)
+    x = np.linspace(domain[0], domain[1], 100)
 
     # Tính giá trị của hàm số trên miền xác định
     y = eval(expression)
@@ -56,14 +60,14 @@ def draw_graph():
 
     # Hiển thị thông tin hàm số và điểm cực trị trong giao diện
     function_info.config(text=f'Hàm số: {expression}')
-    max_value_info.config(text=f'Cực Trị Max: {max_value:.2f} (tại x = {x[max_index]:.2f})')
-    min_value_info.config(text=f'Cực Trị Min: {min_value:.2f} (tại x = {x[min_index]:.2f})')
+    max_value_info.config(text=f'Giá trị Max: {max_value:.2f} (tại x = {x[max_index]:.2f})')
+    min_value_info.config(text=f'Giá trị Min: {min_value:.2f} (tại x = {x[min_index]:.2f})')
 
     plt.show()
 
 # Tạo cửa sổ ứng dụng
 window = tk.Tk()
-window.title('Graph Plotter')
+window.title('Tìm cực trị của hàm số')
 
 # Khung chứa phần nhập liệu
 input_frame = tk.Frame(window)
@@ -74,6 +78,12 @@ expression_label = tk.Label(input_frame, text='Hàm số f(x):')
 expression_label.grid(row=0, column=0, padx=10)
 expression_entry = tk.Entry(input_frame)
 expression_entry.grid(row=0, column=1, padx=10)
+
+# Label và textbox cho miền xác định
+domain_label = tk.Label(input_frame, text='Miền xác định (a, b):')
+domain_label.grid(row=1, column=0, padx=10)
+domain_entry = tk.Entry(input_frame)
+domain_entry.grid(row=1, column=1, padx=10)
 
 # Nút vẽ đồ thị
 draw_button = tk.Button(input_frame, text='Vẽ đồ thị', command=draw_graph)
@@ -98,3 +108,5 @@ min_value_info.pack()
 
 error_label = tk.Label(info_frame, text='', font=('Arial', 12), fg='red')
 error_label.pack()
+# Khởi chạy ứng dụng
+window.mainloop()
