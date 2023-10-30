@@ -57,7 +57,12 @@ def convert_to_grayscale():
     global img
     gray_img = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)  # Chuyển đổi sang ảnh xám
     display_image(gray_img, 'Grayscale Image')
-
+# Hàm xử lý sự kiện khi nút "Adjust Brightness" được nhấn
+def adjust_brightness():
+    global img
+    brightness = brightness_scale.get()
+    adjusted_img = cv2.convertScaleAbs(img, alpha=brightness, beta=0)  # Điều chỉnh độ sáng
+    display_image(adjusted_img, f'Brightness Adjusted Image (Brightness={brightness})')
 # Hàm hiển thị hình ảnh trong cửa sổ
 def display_image(image, window_title='Image'):
     image = Image.fromarray(image)
@@ -85,6 +90,18 @@ blur_button.pack(pady=10)
 # Tạo nút để vẽ lên hình ảnh
 draw_button = tk.Button(root, text="Draw", command=draw_on_image)
 draw_button.pack(pady=10)
+# Tạo nút để chuyển đổi sang ảnh xám
+grayscale_button = tk.Button(root, text="Convert to Grayscale", command=convert_to_grayscale)
+grayscale_button.pack(pady=10)
+
+# Tạo thanh trượt để điều chỉnh độ sáng
+brightness_scale = tk.Scale(root, from_=0.1, to=3, resolution=0.1, orient=tk.HORIZONTAL, label="Brightness")
+brightness_scale.pack(pady=10)
+
+# Tạo nút để điều chỉnh độ sáng
+brightness_button = tk.Button(root, text="Adjust Brightness", command=adjust_brightness)
+brightness_button.pack(pady=10)
+
 
 # Label để hiển thị hình ảnh
 label = tk.Label(root)
