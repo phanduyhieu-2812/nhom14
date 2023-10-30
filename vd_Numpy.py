@@ -1,6 +1,16 @@
 import tkinter as tk
 import numpy as np
 import matplotlib.pyplot as plt
+import math
+
+# Hàm kiểm tra tính hợp lệ của biểu thức hàm số
+def is_expression_valid(expression):
+    try:
+        x = 0
+        y = eval(expression)
+        return True
+    except:
+        return False
 
 # Hàm vẽ đồ thị
 def draw_graph():
@@ -9,6 +19,11 @@ def draw_graph():
 
     # Lấy biểu thức từ ô văn bản
     expression = expression_entry.get()
+
+    # Kiểm tra tính hợp lệ của biểu thức
+    if not is_expression_valid(expression):
+        error_label.config(text='Lỗi: Biểu thức không hợp lệ')
+        return
 
     # Miền xác định
     x = np.linspace(-10, 5, 100)
@@ -24,7 +39,7 @@ def draw_graph():
     plt.plot(x, y, label='f(x)')
     plt.xlabel('x')
     plt.ylabel('f(x)')
-    plt.title('Đồ thị của hàm số ')
+    plt.title('Đồ thị của hàm số')
 
     # Tìm điểm cực trị
     min_index = np.argmin(y)
@@ -35,6 +50,9 @@ def draw_graph():
     plt.scatter(x[max_index], y[max_index], c='blue', label=f'Maximum ({x[max_index]:.2f}, {y[max_index]:.2f})')
 
     plt.legend()
+
+    # Xóa cảnh báo lỗi nếu có
+    error_label.config(text='')
 
     # Hiển thị thông tin hàm số và điểm cực trị trong giao diện
     function_info.config(text=f'Hàm số: {expression}')
@@ -77,5 +95,6 @@ max_value_info.pack()
 min_value_info = tk.Label(info_frame, text='', font=('Arial', 12))
 min_value_info.pack()
 
-# Khởi chạy ứng dụng
-window.mainloop()
+
+error_label = tk.Label(info_frame, text='', font=('Arial', 12), fg='red')
+error_label.pack()
