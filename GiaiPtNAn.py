@@ -55,6 +55,18 @@ def bt1():
         coso.append(entry)
     button2=tk.Button(second_frame,text=f"Giải",command=math)
     button2.pack()
+def save_file(content):
+    file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text Files", "*.txt")])
+    if file_path:
+        try:
+            with open(file_path, "w") as file:
+                file.write(content)
+            messagebox.showinfo("Thông báo", "Kết quả đã được lưu thành công!")
+        except Exception as e:
+            messagebox.showerror("Lỗi", "Đã xảy ra lỗi khi lưu tệp.")
+    else:
+        messagebox.showwarning("Cảnh báo", "Tên tệp không hợp lệ.")
+
 
 
 cs=tk.Tk()
