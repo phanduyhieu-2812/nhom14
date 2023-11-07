@@ -1,7 +1,12 @@
 # nhom14
-Phan Duy Hiếu
-Phạm Văn Hiến
-Hoàng Đình Hiếu
-Trần Tuyết Nhi
-Hoàng Minh Hạnh
-Trần Trung Hiếu
+Phan Duy Hiếu - phanduyhieu-2812
+
+Phạm Văn Hiến - vanhien1211
+
+Trần Trung Hiếu - TrungHieu0
+
+Hoàng Đình Hiếu - hoangdinhhieuk15
+
+Hoàng Minh Hạnh - hoanghanh1501
+
+Trần Tuyết Nhi - snownhi26
